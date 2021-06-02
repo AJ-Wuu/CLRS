@@ -1,3 +1,7 @@
+/*
+ * @author AJ-Wuu
+ */
+
 package hashTable;
 
 import java.util.Hashtable;

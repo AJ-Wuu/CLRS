@@ -1,5 +1,5 @@
-/*
- * @author AJ-Wuu
+/**
+ * @author AJ_Wuu
  */
 
 package hashTable;

@@ -34,8 +34,4 @@ public class RBTree<T> {
 	public void setRoot(Node<T> root) {
 		this.root = root;
 	}
-	
-	public void setRootColor(boolean bool) {
-		this.root.RB = bool;
-	}
 }

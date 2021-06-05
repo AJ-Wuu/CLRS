@@ -15,6 +15,7 @@ public class InsertNode {
 			bst.setRoot(insertNode);
 		}
 
+		//loop insert
 		while (root != null) {
 			int temp = insertNode.key.compareTo(root.key);
 			if (temp < 0) { //insertNode < root
@@ -37,5 +38,27 @@ public class InsertNode {
 			}
 		}
 	}
-	
+
+	public static <T extends Comparable<T>> void insert_recursive(Node<T> root, T insertKey) {
+		Node<T> insertNode = new Node<T>(insertKey, null, null);
+		int temp = insertNode.key.compareTo(root.key);
+		//recursive insert
+		if (temp < 0) {
+			if (root.left == null) {
+				root.left = insertNode;
+			}
+			else {
+				insert_recursive(root.left, insertKey);
+			}
+		}
+		else if (temp > 0) {
+			if (root.right == null) {
+				root.right = insertNode;
+			}
+			else {
+				insert_recursive(root.right, insertKey);
+			}
+		}
+	}
+
 }

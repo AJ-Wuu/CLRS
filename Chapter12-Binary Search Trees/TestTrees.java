@@ -33,7 +33,7 @@ public class TestTrees {
 
 		System.out.println("\n************Insert*************");
 		InsertNode.insert(tree, 1);
-		InsertNode.insert(tree, 11);
+		InsertNode.insert_recursive(tree.getRoot(), 11);
 		InsertNode.insert(tree, 21);
 		System.out.print("Insert Results (1, 11, 21) in MidOrder: ");
 		Traversal.midOrder(tree.getRoot());

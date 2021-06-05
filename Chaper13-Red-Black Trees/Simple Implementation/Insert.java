@@ -59,7 +59,7 @@ public class Insert {
 				}
 			}
 		}
-		rbt.setRootColor(true); //make sure the root is black
+		rbt.getRoot().RB = true; //make sure the root is black
 	}
 
 	public static <T extends Comparable<T>> void insert(RBTree<T> rbt, T insertKey) {

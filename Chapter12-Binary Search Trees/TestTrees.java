@@ -20,8 +20,8 @@ public class TestTrees {
 		System.out.print("PreOrder: ");
 		Traversal.preOrder(tree.getRoot());
 		System.out.print("\n");
-		System.out.print("MidOrder: ");
-		Traversal.midOrder(tree.getRoot());
+		System.out.print("InOrder: ");
+		Traversal.inOrder(tree.getRoot());
 		System.out.print("\n");
 		System.out.print("PostOrder: ");
 		Traversal.postOrder(tree.getRoot());
@@ -35,16 +35,16 @@ public class TestTrees {
 		InsertNode.insert(tree, 1);
 		InsertNode.insert_recursive(tree.getRoot(), 11);
 		InsertNode.insert(tree, 21);
-		System.out.print("Insert Results (1, 11, 21) in MidOrder: ");
-		Traversal.midOrder(tree.getRoot());
+		System.out.print("Insert Results (1, 11, 21) in InOrder: ");
+		Traversal.inOrder(tree.getRoot());
 		System.out.print("\n");
 		
 		System.out.println("\n************Delete*************");
 		DeleteNode.delete(tree, 3);
 		DeleteNode.delete(tree, 17);
 		DeleteNode.delete(tree, 53);
-		System.out.print("Delete Results (3, 17, 53) in MidOrder: ");
-		Traversal.midOrder(tree.getRoot());
+		System.out.print("Delete Results (3, 17, 53) in InOrder: ");
+		Traversal.inOrder(tree.getRoot());
 		System.out.print("\n");
 		
 		System.out.println("\n************Search*************");

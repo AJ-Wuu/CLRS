@@ -13,11 +13,11 @@ public class Supplement {
 		}
 	}
 	
-	public static <T> void midOrder(Node<T> root) {
+	public static <T> void inOrder(Node<T> root) {
 		if (root != null) {
-			midOrder(root.left);
+			inOrder(root.left);
 			System.out.print(root.key + " ");
-			midOrder(root.right);
+			inOrder(root.right);
 		}
 	}
 	

@@ -1,0 +1,3 @@
+The main difference is that a red-black tree is a self-balancing tree, while a binary search tree is not. 
+So a binary search tree is able to form long chains of nodes that can cause searches to take linear time, 
+but a red-black tree guarantees (because it is self-balancing) a search operation takes logarithmic time.

@@ -16,16 +16,16 @@ public class RBTestTrees {
 		System.out.println("*************Begin*************\n");
 		
 		System.out.println("***********Traversal***********");
-		System.out.print("MidOrder: ");
-		Supplement.midOrder(tree.getRoot());
+		System.out.print("InOrder: ");
+		Supplement.inOrder(tree.getRoot());
 		System.out.print("\n");
 
 		System.out.println("\n************Insert*************");
 		Insert.insert(tree, 1);
 		Insert.insert(tree, 21);
 		Insert.insert(tree, 31);
-		System.out.print("Insert Results (1, 21, 31) in MidOrder: ");
-		Supplement.midOrder(tree.getRoot());
+		System.out.print("Insert Results (1, 21, 31) in InOrder: ");
+		Supplement.inOrder(tree.getRoot());
 		System.out.print("\n");
 		
 		System.out.println("\n************Search*************");
@@ -39,8 +39,8 @@ public class RBTestTrees {
 		Delete.delete(tree, 10);
 		Delete.delete(tree, 31);
 		Delete.delete(tree, 41);
-		System.out.print("Delete Results (3, 10, 31) in MidOrder: ");
-		Supplement.midOrder(tree.getRoot());
+		System.out.print("Delete Results (3, 10, 31) in InOrder: ");
+		Supplement.inOrder(tree.getRoot());
 		System.out.print("\n");
 		
 		System.out.println("\n**************End**************");

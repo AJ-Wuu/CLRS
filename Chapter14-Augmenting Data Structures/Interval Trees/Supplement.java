@@ -16,17 +16,6 @@ public class Supplement {
 			}
 		}
 	}
-
-	public static <T> ITNode<T> maximum(ITNode<T> root) {
-		while (true) {
-			if (root.right != null) {
-				root = root.right;
-			}
-			else {
-				return root;
-			}
-		}
-	}
 	
 	public static <T> void inOrder(ITNode<T> root) {
 		if (root != null) {

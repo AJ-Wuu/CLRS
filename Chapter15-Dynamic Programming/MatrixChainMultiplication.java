@@ -35,7 +35,7 @@ public class MatrixChainMultiplication {
 			return 0;
 		}
 		
-		//Because mem[][]'s size is set, this method is not the best choice
+		//100x100 is large enough for most cases
 		if (mem[i][j] != -1) {
 			return mem[i][j];
 		}

@@ -29,6 +29,7 @@ public class MatrixChainMultiplication {
 		return minRound;
 	}
 	
+	//Memoization
 	static int matrixChainMemoization(int[] num, int i, int j) {
 		if (i == j) {
 			return 0;

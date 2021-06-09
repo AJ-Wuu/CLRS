@@ -15,6 +15,7 @@ public class LongestCommonIncreasingSubsequence {
 		return c;
 	}
 
+	//O(n^2)
 	static int memoLCISAux(int[] X, int[] Y, char[][] b, int[][] c) {
 		int m = X.length;
 		int n = Y.length;

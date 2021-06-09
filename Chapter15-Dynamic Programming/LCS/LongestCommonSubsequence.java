@@ -31,7 +31,7 @@ public class LongestCommonSubsequence {
 		for (int i=0; i<m; i++) {
 			for (int j=0; j<n; j++) {
 				if (X[i] == Y[j]) {
-					c[i+1][j+1] = (c[i][j] + 1);
+					c[i+1][j+1] = c[i][j] + 1;
 					b[i][j] = 'c'; //Combination -> upper left
 				}
 				else if (c[i][j+1] >= c[i+1][j]) {

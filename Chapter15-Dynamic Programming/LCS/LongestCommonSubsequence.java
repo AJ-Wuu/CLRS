@@ -162,8 +162,7 @@ public class LongestCommonSubsequence {
 		}
 	}
 	
-	//There are multiple other possibilities for this set,
-	//including bbaaba, ababab, abaaba, etc.
+	//Though not mentioned by the book, there are multiple other possibilities for this set, including bbaaba, ababab, abaaba, etc.
 
 	public static void main(String[] args) {
 		char[] X = new char[] {'a','b','b','a','b','a','b','a'};

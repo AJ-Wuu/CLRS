@@ -1,3 +1,7 @@
+/**
+ * @author AJWuu
+ */
+
 package matrixChainMultiplication;
 
 import java.util.Arrays;

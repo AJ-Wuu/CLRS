@@ -1,3 +1,7 @@
+/**
+ * @author AJWuu
+ */
+
 package rodCutting;
 
 public class RodCutting {

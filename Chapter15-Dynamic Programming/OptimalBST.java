@@ -11,7 +11,7 @@ public class OptimalBST {
 	static int[][] optimalBST(double[] p, double[] q, int n) {
 		double[][] e = new double[n+2][n+1];
 		double[][] w = new double[n+2][n+1];
-		int[][] root = new int[n+1][n+1];
+		int[][] root = new int[n+2][n+1];
 		for (int i=1; i<=n+1; i++) {
 			e[i][i-1] = q[i-1];
 			w[i][i-1] = q[i-1];
@@ -36,11 +36,8 @@ public class OptimalBST {
 	}
 
 	static void constructOptimalBST(int[][] root, int i, int j, int r) {
-		int rootChild = 0;
-		if (i < root.length && j < root.length) {
-			rootChild = root[i][j];
-		}
-		if (rootChild == root[1][root.length-1]) {
+		int rootChild = root[i][j];
+		if (rootChild == root[1][root.length-2]) {
 			System.out.println("k" + root[i][j] + " is the root");
 			constructOptimalBST(root, i, rootChild-1, rootChild);
 			constructOptimalBST(root, rootChild+1, j, rootChild);

@@ -36,6 +36,7 @@ public class ActivitySelection {
 		System.out.print("A" + n + " ");
 	}
 
+	//???
 	static void dynamicSelector(int[] start, int[] end, int n) {
 		int[][] c = new int[n+2][n+2];
 		int[][] act = new int[n+2][n+2];

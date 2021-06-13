@@ -18,6 +18,7 @@ public class Knapsack {
 		return sum;
 	}
 
+	//dynamic solution in O(n*W)
 	static int knapsack(int[] value, int[] weight, int n, int W) {
 		int[][] k = new int[n][W+1];
 		for (int i=0; i<n; i++) {

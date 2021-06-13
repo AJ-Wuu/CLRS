@@ -48,10 +48,10 @@ public class Knapsack {
 	
 	public static void main(String[] args) {
 		int value[] = new int[] {60,100,120};
-        int weight[] = new int[] {10,20,30};
-        int W = 50;
-        int n = value.length;
-        System.out.println(knapsack(value, weight, n, W));
+        	int weight[] = new int[] {10,20,30};
+        	int W = 50;
+        	int n = value.length;
+        	System.out.println(knapsack(value, weight, n, W));
 	}
 
 }

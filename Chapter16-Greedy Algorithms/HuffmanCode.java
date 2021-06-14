@@ -21,6 +21,7 @@ class huffmanNode {
 	}
 }
 
+//pay attention to this change to PriorityQueue
 class newComparator implements Comparator<huffmanNode> {
 	public int compare(huffmanNode a, huffmanNode b) {
 		return (a.data - b.data); //same result as compareTo()

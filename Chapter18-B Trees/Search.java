@@ -8,7 +8,7 @@ public class Search {
 	
 	public static BTNode search(BTNode x, int k) {
 		int i = 0;
-		while (i <= x.n && k > x.keys[i]) {
+		while (i < x.n && k > x.keys[i]) {
 			i++;
 		}
 		if (i <= x.n && k == x.keys[i]) {

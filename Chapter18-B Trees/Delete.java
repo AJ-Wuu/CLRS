@@ -27,10 +27,6 @@ public class Delete {
 		return k;
 	}
 
-	public static void leftRotate(BTree x, BTree sibling, BTree p) {
-
-	}
-
 	public static void delete(BTree bt, int key) {
 		BTNode x = Search.search(bt.getRoot(), key);
 		if (x == null) {

@@ -24,7 +24,8 @@ Transition between indexes -- size(universe_index) x, cluster_index i, position_
 5. store maximum to see whether we go to a cluster or go to the summary directly
     -- Insert(V, x) needs O(log(u)): ... if (x > V.max), V.max = x, ...
     -- Successor(V, x) needs O(log(log(u))):
-                A -> i = high(x), if (low(x) < V.cluster[i]), j = Successor(V.cluster[i], low(x))
+                i = high(x)
+                A -> if (low(x) < V.cluster[i]), j = Successor(V.cluster[i], low(x))
                 B -> else, i = Successor(V.summary, high(x)), j = V.cluster[i].min
                 both return index(i, j)
 6. don't store the minimum recursively
@@ -38,3 +39,15 @@ Transition between indexes -- size(universe_index) x, cluster_index i, position_
                                          if we don't need Insert(V.summary, high(x)), we do Insert(V.cluster[high(x)], low(x)) normally.
                                          So in all, there is only one recursive call.
     -- Successor(V, x) (fix the incorrectness): if (x < V.min), return V.min; ...
+    -- Delete(V, x):
+                if (x == V.min), i = V.summary.min; if (i == null), V.min = V.max = null and x = V.min = index(i, V.cluster[i].min)
+                Delete(V.cluster[high(x)], low(x))
+                if (V.cluster[high(x)].min == null), Delete(V.summary, high(x))
+                if (x == V.max),
+                        if (V.summary.max == null), V.max = V.min //V.summary is empty or has only one element left
+                        else, i = V.summary.max, V.max = index(i, V.cluster[i].max)
+7. only store non-empty clusters for better space utility
+    -> make V.cluster a hash table -> space is changed from O(u) to O(n * log(log(u)))
+    -> stop recursion when n is very small, eg. n == log(log(u)), and for the n elements, use other basic structures like a linked-list or whatever -> space is changed to O(n)
+
+Time Consumption Lower Bound (generally not possible to go faster): Ω(log(log(u))) for u = n ^ (log(n) ^ O(1)) and space = O(n * poly(log(n)))

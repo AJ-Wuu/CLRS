@@ -3,8 +3,8 @@ Transition between indexes -- size(universe_index) x, cluster_index i, position_
     Hence, helper functions: high(x) = floor(x / sqrt(u)) = i; low(x) = x mod sqrt(u) = j
         -> in bit-wise representation, eg. u = 16 and x = 9, the bit representation of x is 1001,
            which has exactly the same length of sqrt(u) (4 bits), so 1 0 0 1 -> high(x) = 10, low(x) = 01
-                               --- ---
-                              high low
+                                                                     --- ---
+                                                                    high low
 
 1. bit vector = an array of size u (0 = absent; 1 = present)
 2. split universe into sqrt(u) clusters of size sqrt(u)

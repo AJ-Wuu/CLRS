@@ -1,18 +1,40 @@
 Transition between indexes -- size(universe_index) x, cluster_index i, position_in_cluster j (0 <= j < sqrt(u)):
         x = i * sqrt(u) + j <- will also be known as index(i, j)
     Hence, helper functions: high(x) = floor(x / sqrt(u)) = i; low(x) = x mod sqrt(u) = j
-        -> in bit-wise representation, eg. u = 16 and x = 9, the bit representation of x is 1001, which has exactly the same length of sqrt(u) (4 bits), so 1 0 0 1 -> high(x) = 10, low(x) = 01
+        -> in bit-wise representation, eg. u = 16 and x = 9, the bit representation of x is 1001,
+           which has exactly the same length of sqrt(u) (4 bits), so 1 0 0 1 -> high(x) = 10, low(x) = 01
                                --- ---
                               high low
 
 1. bit vector = an array of size u (0 = absent; 1 = present)
 2. split universe into sqrt(u) clusters of size sqrt(u)
     -- Insert needs O(1)
-    -- Successor(x) needs O(sqrt(u)): A. look into x's clusters; B. look for next 1 in the summary; C. look for first 1 in that cluster
+    -- Successor(x) needs O(sqrt(u)): A. look into x's clusters
+                                      B. look for next 1 in the summary
+                                      C. look for first 1 in that cluster
 3. recurse with V = size-u vEB; V.cluster[i] = size-sqrt(u) vEB (0 <= i < sqrt(u)); V.summary = size-sqrt(u) vEB
     -- Insert(V, x): Insert(V.cluster(high(x)), low(x)) and Insert(V.summary, high(x))
-    -- Successor(V, x):
+    -- Successor(V, x) needs O(log(u)) -> TOO MANY RECURSIONS:
                 A -> i = high(x) and j = Successor(V.cluster[i], low(x))
-                B -> if (j == INF), i = Successor(V.summary, i) and j = Successor(V.cluster[i], -INF or -1), return index(i, j)
-4. this
-
+                B -> if (j == INF), i = Successor(V.summary, i) and j = Successor(V.cluster[i], -INF or -1)
+                both return index(i, j)
+4. store minimum to reduce recursion times
+    -- Insert(V, x) needs O(log(u)): if (x < V.min), V.min = x, ...
+    -- Successor(V, x): A, B -> ... and j = V.cluster[i].min, ... -> reduce one recursion
+5. store maximum to see whether we go to a cluster or go to the summary directly
+    -- Insert(V, x) needs O(log(u)): ... if (x > V.max), V.max = x, ...
+    -- Successor(V, x) needs O(log(log(u))):
+                A -> i = high(x), if (low(x) < V.cluster[i]), j = Successor(V.cluster[i], low(x))
+                B -> else, i = Successor(V.summary, high(x)), j = V.cluster[i].min
+                both return index(i, j)
+6. don't store the minimum recursively
+    -- Insert(V,x) needs O(log(log(u))):
+                if (V.min == null), V.min = V.max = x //V is empty
+                if (x < V.min), swap(x, V.min) because x belongs to the current position, but V.min needs to be recursively inserted
+                if (x > V.max), V.max = x
+                if (V.cluster[high(x)].min == null), Insert(V.summary, high(x)) //V.cluster[high(x)] is empty; if not empty, then this process has already happened
+                Insert(V.cluster[high(x)], low(x)) //always need to do
+       This takes O(log(log(u))) because if we do Insert(V.summary, high(x)), Insert(V.cluster[high(x)], low(x)) only takes constant time;
+                                         if we don't need Insert(V.summary, high(x)), we do Insert(V.cluster[high(x)], low(x)) normally.
+                                         So in all, there is only one recursive call.
+    -- Successor(V, x) (fix the incorrectness): if (x < V.min), return V.min; ...

@@ -26,6 +26,7 @@ public class TestTree {
 		System.out.println("Check if key = 4 is in the tree: " + Member.isMember(tree, 4));
 		System.out.println("The minimum of the tree changes to: key = " + Compare.getMinimum(tree));
 		System.out.println("The maximum of the tree changes to: key = " + Compare.getMaximum(tree));
+		//bug free
 	}
 
 }

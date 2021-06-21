@@ -55,14 +55,12 @@ public class DisjointSets {
 		union(s, 0, 2);
 		union(s, 4, 2);
 		union(s, 3, 1);
-		
 		if (find(s, 4) == find(s, 0)) {
 			System.out.println("4 is a friend of 0");
 		}
 		else {
 			System.out.println("4 is not a friend of 0");
 		}
-
 		if (find(s, 1) == find(s, 2)) {
 			System.out.println("1 is a friend of 2");
 		}

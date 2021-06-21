@@ -43,7 +43,8 @@ public class DisjointSets {
 		else { //s.rank[rep_x] >= s.rank[rep_y]
 			s.parent[rep_y] = rep_x; //move y under x -> this order doesn't matter for "=="
 			if (s.rank[rep_x] == s.rank[rep_y]) {
-				s.rank[rep_x]++; //increment the result tree's rank by 1
+				//combine two trees, the result tree's rank needs to go up by 1
+				s.rank[rep_x]++;
 			}
 		}
 	}
@@ -54,7 +55,7 @@ public class DisjointSets {
 		union(s, 0, 2);
 		union(s, 4, 2);
 		union(s, 3, 1);
-
+		
 		if (find(s, 4) == find(s, 0)) {
 			System.out.println("4 is a friend of 0");
 		}
@@ -67,6 +68,14 @@ public class DisjointSets {
 		}
 		else {
 			System.out.println("1 is not a friend of 2");
+		}
+		
+		union(s, 2, 1);
+		if (find(s, 3) == find(s, 4)) {
+			System.out.println("3 is a friend of 4");
+		}
+		else {
+			System.out.println("3 is not a friend of 4");
 		}
 	}
 

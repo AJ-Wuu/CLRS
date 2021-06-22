@@ -2,7 +2,7 @@
  * @author AJWuu
  */
 
-package graph;
+package undirectedGraph;
 
 import java.util.Iterator;
 

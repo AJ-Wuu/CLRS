@@ -2,7 +2,7 @@
  * @author AJWuu
  */
 
-package graph;
+package undirectedGraph;
 
 public class AdjacentMatrix {
 	int V; //vertex

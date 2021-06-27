@@ -2,7 +2,7 @@
  * @author AJWuu
  */
 
-package nonNegativeWeightGraph;
+package negativeWeightDirectedGraph;
 
 public class BellmanFordAlgorithm {
 

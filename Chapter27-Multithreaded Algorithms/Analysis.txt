@@ -1,5 +1,12 @@
 Master-Method Cheat Sheet:
 Solve T(n) = a * T(n/b) + f(n), where a >= 1 and b > 1
 Case1: f(n) = O(n^(logb(a) - ε)), constant ε > 0 => T(n) = Θ(n^logb(a))
+       Eg. T(n) = 4 * T(n/2) + n
+           n^logb(a) = n^2 >> n => T(n) = Θ(n^2)
 Case2: f(n) = Θ(n^logb(a) * (lgn)^k), constant k >= 0 => T(n) = Θ(n^logb(a) * (lgn)^(k+1))
+       Eg. T(n) = 4 * T(n/2) + n^2
+           n^logb(a) = n^2 = n^2 * (lgn)^0 => T(n) = Θ(n^2 * lgn)
 Case3: f(n) = Ω(n^(logb(a) + ε)), constant ε > 0 and regularity condition => T(n) = Θ(f(n))
+       Eg. T(n) = 4 * T(n/2) + n^3
+           n^logb(a) = n^2 << n^3 => T(n) = Θ(n^3)
+Additional Case: Eg. T(n) = 4 * T(n/2) + n^2 / lgn => T(n) = Θ(n^2 * lg(lgn))

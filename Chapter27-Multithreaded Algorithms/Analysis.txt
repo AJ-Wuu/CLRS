@@ -14,3 +14,5 @@ Additional Case:
            For this example, (lgn)^k -> k = -1 => NOT Case2; the ratio is lgn, which is smaller than any n^ε => NOT Case1
 
 There is an Akra-Bazzi Method (more complicated and more general) for this kind of recurrence
+
+Bit Trick: ((n & (-n)) == n) asserts that n is a power of 2

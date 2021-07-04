@@ -9,4 +9,8 @@ Case2: f(n) = Θ(n^logb(a) * (lgn)^k), constant k >= 0 => T(n) = Θ(n^logb(a) * 
 Case3: f(n) = Ω(n^(logb(a) + ε)), constant ε > 0 and regularity condition => T(n) = Θ(f(n))
        Eg. T(n) = 4 * T(n/2) + n^3
            n^logb(a) = n^2 << n^3 => T(n) = Θ(n^3)
-Additional Case: Eg. T(n) = 4 * T(n/2) + n^2 / lgn => T(n) = Θ(n^2 * lg(lgn))
+Additional Case:
+       Eg. T(n) = 4 * T(n/2) + n^2 / lgn => T(n) = Θ(n^2 * lg(lgn)) (Could be proved by substitution)
+           For this example, (lgn)^k -> k = -1 => NOT Case2; the ratio is lgn, which is smaller than any n^ε => NOT Case1
+
+There is an Akra-Bazzi Method (more complicated and more general) for this kind of recurrence

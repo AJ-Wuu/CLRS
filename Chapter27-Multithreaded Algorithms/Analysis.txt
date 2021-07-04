@@ -16,3 +16,27 @@ Additional Case:
 There is an Akra-Bazzi Method (more complicated and more general) for this kind of recurrence
 
 Bit Trick: ((n & (-n)) == n) asserts that n is a power of 2
+
+Performance Tips:
+1. Minimize the span to maximize parallelism. Try to generate 10 times more parallelism than processors for near-perfect linear speedup.
+2. If you have plenty of parallelism, try to trade some of it off to reduce work overhead.
+3. Use divide-and-conquer recursion or parallel loops rather than spawning one small thing after another.
+   Eg. DO: cilk_for (int i=0; i<n; i++) {
+               foo(i);
+           }
+       NOT: for (int i=0; i<n; i++) {
+                cilk_spawn foo(i);
+            }
+4. Ensure that work/#spawns is sufficiently large. Coarsen by using function calls and inlining near the leaves of recursion, rather than spawning.
+5. Parallelize outer loops, as opposed to inner loops, if you're forced to make a choice.
+6. Watch out for scheduling overheads.
+   Eg. DO: cilk_for (int i=0; i<2; i++) {
+               for (int j=0; j<n; j++) {
+                   f(i, j);
+               }
+           }
+       NOT: for (int j=0; j<n; j++) {
+                cilk_for (int i=0; i<2; i++) {
+                    f(i, j);
+                }
+            }

@@ -1,3 +1,11 @@
+States:                                                        1.New
+1. new                                                   start() ↓
+2. reunnable                                                2.Runnable   ↖ sleep() done, I/O complete, lock available, resume(), notify()
+3. running                                                       ↓          4.Blocked (Non-Runnable)
+4. waiting / blocked / sleeping                              3.Running   ↗ sleep(), block on I/O, wait for lock, suspend(), wait()
+5. dead                             run() method exits or stop() ↓
+                                                            5.Terminated
+
 Master-Method Cheat Sheet:
 Solve T(n) = a * T(n/b) + f(n), where a >= 1 and b > 1
 Case1: f(n) = O(n^(logb(a) - ε)), constant ε > 0 => T(n) = Θ(n^logb(a))

@@ -23,6 +23,9 @@ public class QuickSelect {
 	}
 
 	//Lomuto's Partition Scheme
+	//Note that this method only makes sure that elements on the left side of pivot is less than pivot and right side equal or more than pivot.
+	//However, it does not guarantee that the left / right side is formed in ascending order (it's actually "random").
+	//Eg. (Element-Frequency) 7-2, 10-5, 3-6, 9-2, 4-1, 2-4 -> Ordered by frequency with pivot = 2 -> 7-2, 9-2, 4-1, 2-4, 3-6, 10-5
 	//1. Move pivot at the end of the array using swap
 	//2. Set the pointer at the beginning of the array store_index = left
 	//3. Iterate over the array and move all less frequent elements to the left swap(store_index, i). Move store_index one step to the right after each swap

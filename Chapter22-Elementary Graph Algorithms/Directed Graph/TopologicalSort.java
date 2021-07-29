@@ -8,6 +8,14 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class TopologicalSort {
+	/* The notion of Topological Sort is:
+	 * 1. Setting the order of going over all nodes (often use for(Node node : all nodes) { if(!visited[node]) { ... } }).
+	 * 2. Go to the next unvisited node, and keep going to its unvisited neighbor until there is no unvisited neighbor left.
+	 * 3. Push the last neighbor node onto the stack, go back to the second-last neighbor node, and check if the second-last neighbor has any other unvisited neighbor.
+	 * 4. Keep doing step 3 until all the neighbors in this "relation tree" are visited and pushed onto the stack.
+	 * 5. Go to the next unvisited node according to the order set in step 1, and keep going until no one is unvisited.
+	 * 6. For now, the stack should contain all the nodes, so output the stack with the LIFO rule, and we get the sorting result.
+	 */
 
 	private static void TopoHelper(AdjacentList list, int i, boolean[] visited, Stack<Integer> stack) {
 		visited[i] = true;

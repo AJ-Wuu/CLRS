@@ -1,3 +1,7 @@
+/**
+ * @author AJWuu
+ */
+
 //A Graph Theory, known as Eulerian Path / Circuit algorithm / Hierholzer's algorithm
 //Time Complexity: O(E)
 //Step 1: Find an Eulerian path is determining, if there exists and Eulerian path
@@ -13,10 +17,6 @@
 //      Trick here -> once we get stuck (that the current node has no unvisited outgoing edges), we BACKTRACK and add the current node to the solution
 //                    when backtracking, if the current node has any remaining unvisited edges, we follow any of them calling the DFS recursively to extend the Eulerian path
 //                    we can use the out[] array as the signal to see if unvisited node exists -> every time an edge is taken, reduce its outgoing edge count
-
-/**
- * @author AJWuu
- */
 
 package eulerianPath;
 
@@ -55,18 +55,15 @@ public class EulerianPath {
 		HashMap<Integer, PriorityQueue<Integer>> graph = new HashMap<Integer, PriorityQueue<Integer>>();
 		HashMap<Integer, InOut> degrees = new HashMap<Integer, InOut>();
 		int sumIn = 0, sumOut = 0;
-		InOut temp;
 		for (int[] num : nums) {
 			graph.computeIfAbsent(num[0], k -> new PriorityQueue<Integer>());
 			graph.get(num[0]).add(num[1]);
 			
 			//Create / Update the InOut of each node
 			degrees.computeIfAbsent(num[0], k -> new InOut(0,0));
-			temp = degrees.get(num[0]);
-			temp.out++;
+			degrees.get(num[0]).out++;
 			degrees.computeIfAbsent(num[1], k -> new InOut(0,0));
-			temp = degrees.get(num[1]);
-			temp.in++;
+			degrees.get(num[1]).in++;
 			sumIn++;
 			sumOut++;
 		}
@@ -77,7 +74,7 @@ public class EulerianPath {
 		}
 		int start = 0;
 		for (int key : degrees.keySet()) {
-			temp = degrees.get(key);
+			InOut temp = degrees.get(key);
 			if (temp.in - temp.out > 1 || temp.out - temp.in > 1) {
 				return (new ArrayList<Integer>());
 			}

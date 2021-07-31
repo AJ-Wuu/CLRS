@@ -56,14 +56,15 @@ public class EulerianPath {
 		HashMap<Integer, InOut> degrees = new HashMap<Integer, InOut>();
 		int sumIn = 0, sumOut = 0;
 		for (int[] num : nums) {
-			graph.computeIfAbsent(num[0], k -> new PriorityQueue<Integer>());
-			graph.get(num[0]).add(num[1]);
+			int src = num[0], dest = num[1];
+			graph.computeIfAbsent(src, k -> new PriorityQueue<Integer>());
+			graph.get(src).add(dest);
 			
 			//Create / Update the InOut of each node
-			degrees.computeIfAbsent(num[0], k -> new InOut(0,0));
-			degrees.get(num[0]).out++;
-			degrees.computeIfAbsent(num[1], k -> new InOut(0,0));
-			degrees.get(num[1]).in++;
+			degrees.computeIfAbsent(src, k -> new InOut(0,0));
+			degrees.get(src).out++;
+			degrees.computeIfAbsent(dest, k -> new InOut(0,0));
+			degrees.get(dest).in++;
 			sumIn++;
 			sumOut++;
 		}

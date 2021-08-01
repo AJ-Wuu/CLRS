@@ -42,7 +42,7 @@ public class EulerianPath {
 	 */
 	
 	public static ArrayList<Integer> DFS(HashMap<Integer, PriorityQueue<Integer>> graph, int curr, ArrayList<Integer> solution) {
-		while (!graph.get(curr).isEmpty()) {
+		while (graph.containsKey(curr) && !graph.get(curr).isEmpty()) {
 			int next = graph.get(curr).poll();
 			DFS(graph, next, solution);
 		}
